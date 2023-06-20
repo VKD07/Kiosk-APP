@@ -565,7 +565,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 100000
-  m_StoppingDistance: 2
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1172,6 +1172,12 @@ MonoBehaviour:
   coffeeTag: {fileID: 138561284}
   fashionTag: {fileID: 1289051069}
   restaurantTag: {fileID: 1680359929}
+  shopTags:
+  - Coffee
+  - Fashion
+  - Restaurant
+  level1Shops: []
+  level2Shops: []
 --- !u!1 &317169972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,8 +1293,8 @@ GameObject:
   - component: {fileID: 359113168}
   - component: {fileID: 359113167}
   m_Layer: 0
-  m_Name: x
-  m_TagString: Level2
+  m_Name: giordano
+  m_TagString: Fashion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 2147483647
@@ -5267,8 +5273,8 @@ GameObject:
   - component: {fileID: 1557584524}
   - component: {fileID: 1557584523}
   m_Layer: 0
-  m_Name: z
-  m_TagString: Level2
+  m_Name: zara
+  m_TagString: Fashion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 2147483647
