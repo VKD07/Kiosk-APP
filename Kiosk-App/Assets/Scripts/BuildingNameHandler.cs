@@ -24,7 +24,6 @@ public class BuildingNameHandler : MonoBehaviour
             shopNames.Add(shopName.name);
         }
     }
-
     //public Transform GetBuildingLocation(string nameOfShop)
     //{
     //    //foreach(var shopName in shopNames)

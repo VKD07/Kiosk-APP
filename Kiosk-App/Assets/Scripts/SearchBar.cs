@@ -23,8 +23,8 @@ public class SearchBar : MonoBehaviour
 
     public void GetSearchInput(string s)
     {
-        targetLocation = GameObject.Find(searchBar.text).transform;
+        targetLocation = GameObject.Find(searchBar.text.ToLower()).transform;
         navigator.SetNavDestination(targetLocation);
-        uihandler.SearchPanelSetActive(false);
+        //uihandler.SearchPanelSetActive(false);
     }
 }

@@ -8,11 +8,11 @@ public class Navigator : MonoBehaviour
 {
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] NavMeshAgent navMesh;
-    [SerializeField] bool pathDrawn;
+    [SerializeField] public bool pathDrawn;
     [SerializeField] BuildingNameHandler buildingHandler;
     [SerializeField] Transform nextLocation;
     bool goingStairs;
-    bool stairsReached;
+    public bool stairsReached;
 
     [SerializeField] SearchBar searchBar;
     private void Start()
@@ -58,7 +58,8 @@ public class Navigator : MonoBehaviour
 
     public void SetNavDestination(Transform targetLocation)
     {
-        if (targetLocation.gameObject.tag == "Level1" || stairsReached)
+        int LayerIgnoreRaycast = LayerMask.NameToLayer("Level1");
+        if (targetLocation.gameObject.layer == LayerIgnoreRaycast || stairsReached)
         {
             navMesh.SetDestination(targetLocation.position);
         }
@@ -71,7 +72,6 @@ public class Navigator : MonoBehaviour
                 navMesh.SetDestination(buildingHandler.stairs[0].transform.position);
                 nextLocation = buildingHandler.stairs[1].transform;
             }
-            //GoToNextFloor(buildingHandler.stairs[1].transform);
         }
     }
 
@@ -79,7 +79,6 @@ public class Navigator : MonoBehaviour
     {
         if (goingStairs)
         {
-            print(Vector3.Distance(navMesh.transform.position, navMesh.destination));
             if (Vector3.Distance(navMesh.transform.position, navMesh.destination) <= navMesh.stoppingDistance)
             {
                 navMesh.enabled = false;
@@ -97,10 +96,17 @@ public class Navigator : MonoBehaviour
     IEnumerator EnableNavMesh()
     {
         yield return new WaitForSeconds(0.1f);
-        print(navMesh.destination);
         navMesh.enabled = true;
         SetNavDestination(searchBar.targetLocation);
         DrawTrailPath();
         goingStairs = false;
+    }
+
+    public bool StairsReached
+    {
+        get
+        {
+            return stairsReached;
+        }
     }
 }
