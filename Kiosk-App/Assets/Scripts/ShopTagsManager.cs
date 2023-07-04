@@ -5,18 +5,21 @@ using UnityEngine.UI;
 
 public class ShopTagsManager : MonoBehaviour
 {
-    [SerializeField] Button coffeeTag;
-    [SerializeField] Button fashionTag;
-    [SerializeField] Button restaurantTag;
+    //[SerializeField] Button coffeeTag;
+    //[SerializeField] Button fashionTag;
+    //[SerializeField] Button restaurantTag;
 
-    [SerializeField] string[] shopTags;
+    //[SerializeField] string[] shopTags;
     [SerializeField] Renderer[] level1Shops;
     [SerializeField] Renderer[] level2Shops;
+    [NonReorderable]
+    public ShopColorChanger[] shopColorChanger;
     void Start()
     {
-        BtnListener(coffeeTag, shopTags[0], Color.green);
-        BtnListener(fashionTag, shopTags[1], Color.red);
-        BtnListener(restaurantTag, shopTags[2], Color.grey);
+        for (int i = 0; i < shopColorChanger.Length; i++)
+        {
+            BtnListener(shopColorChanger[i].tagButton, shopColorChanger[i].shopTag, shopColorChanger[i].shopColor);
+        }
     }
 
     void BtnListener(Button btn, string tagName, Color shopHighLight)
@@ -26,7 +29,7 @@ public class ShopTagsManager : MonoBehaviour
 
     void HighlightShop(string tagName, Color shopColorHighlight)
     {
-        FindAllShopRenderers();
+        ResetShopRenderersColor();
         GameObject[] shops = GameObject.FindGameObjectsWithTag(tagName);
         for (int i = 0; i < shops.Length; i++)
         {
@@ -34,7 +37,7 @@ public class ShopTagsManager : MonoBehaviour
         }
     }
 
-    void FindAllShopRenderers()
+    void ResetShopRenderersColor()
     {
         level1Shops = GameObject.Find("Level1").transform.Find("Shops").GetComponentsInChildren<Renderer>();
         level2Shops = GameObject.Find("Level2").transform.Find("Shops").GetComponentsInChildren<Renderer>();

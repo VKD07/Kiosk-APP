@@ -1136,7 +1136,7 @@ GameObject:
   - component: {fileID: 281494017}
   - component: {fileID: 281494018}
   m_Layer: 0
-  m_Name: ShopTags Manager
+  m_Name: ShopColorChanger Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1169,15 +1169,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44f74b77df6b6e419c1547e9bc02e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coffeeTag: {fileID: 138561284}
-  fashionTag: {fileID: 1289051069}
-  restaurantTag: {fileID: 1680359929}
-  shopTags:
-  - Coffee
-  - Fashion
-  - Restaurant
   level1Shops: []
   level2Shops: []
+  shopColorChanger:
+  - tagButton: {fileID: 138561284}
+    shopTag: Coffee
+    shopColor: {r: 0.735849, g: 0.42651543, b: 0.080989584, a: 0}
+  - tagButton: {fileID: 1289051069}
+    shopTag: Fashion
+    shopColor: {r: 1, g: 0.30817604, b: 0.30817604, a: 0}
 --- !u!1 &317169972
 GameObject:
   m_ObjectHideFlags: 0
